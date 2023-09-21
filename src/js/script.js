@@ -38,7 +38,7 @@ function getTimeRemaining(endtime) {
         var timeinterval = setInterval(updateClock, 1000);
       }
       
-      var deadline="January 01 2018 00:00:00 GMT+0300"; //for Ukraine
+      var deadline="January 01 2024 00:00:00 GMT+0300"; 
       var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000); // for endless timer
       initializeClock('countdown', deadline);
 
@@ -50,48 +50,16 @@ const swiper = new Swiper('.swiper', {
         pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
-                // allowTouchMove: true,
                 autoplayDisableOnInteraction: true,
-                // type : 'custom',
-                // bulletClass:'swiper-pagination__img',
-                // bullets: 'swiper-pagination__img',
-                // bulletClass: 'swiper-pagination__img',
-                // bulletActiveClass: '_active',
-                // renderBullet: function (index, className) {
-                //         return '<span class="' + className + '">' + (index + 1) + '</span>';
-                // }
         },
 
       });
    
 const customBullets = document.querySelectorAll('.swiper-pagination-bullet');
-console.log(customBullets);
-customBullets[0].classList.add('swiper-pagination__img_1');
-customBullets[1].classList.add('swiper-pagination__img_2');
-customBullets[2].classList.add('swiper-pagination__img_3');
-customBullets[3].classList.add('swiper-pagination__img_4');
+for (let i = 0; i < customBullets.length; i++) {
+  customBullets[i].classList.add(`swiper-pagination__img_${i + 1}`);
+}
 
-console.log(document.querySelector('.swiper-slide-active'));
-
-const optionMenu = document.querySelector(".select-menu"),
-  selectBtn = optionMenu.querySelector(".select-btn"),
-  options = optionMenu.querySelectorAll(".option"),
-  sBtn_text = optionMenu.querySelector(".sBtn-text");
-
-selectBtn.addEventListener("click", () =>
-  optionMenu.classList.toggle("active")
-);
-
-options.forEach((option) => {
-  option.addEventListener("click", () => {
-    let selectedOption = option.querySelector(".option-text").innerText;
-    sBtn_text.innerText = selectedOption;
-
-    optionMenu.classList.remove("active");
-  });
-});
-
-// const sizeMenuBl
 class Menu {
         constructor (menuBlock) {
                 this.parentBlock = document.querySelector(`.${menuBlock}`);
@@ -101,11 +69,6 @@ class Menu {
         }
 
         init() {
-                // this.parentBlock.
-                console.log(this.parentBlock);
-                console.log(this.selectBtn);
-                console.log(this.options);
-                console.log(this.sBtnText);
                 this.clickBtn();
                 this.clickOption();
         }
@@ -130,6 +93,9 @@ class Menu {
 
 const sizeMenu = new Menu('good__size-menu');
 sizeMenu.init();
+
+const colorMenu = new Menu('good__color-menu');
+colorMenu.init();
 
 
                               
